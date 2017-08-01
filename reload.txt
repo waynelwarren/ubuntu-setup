@@ -11,6 +11,10 @@ https://www.google.com/chrome/browser/desktop/index.html
 Appearance->Behavior: Show the menus for a window (In the window's title bar)
 Brightness & Lock: 10 minutes, 1 hour.
 # ===============================================================
+# terminal settings
+# ===============================================================
+Edit->Profile Preferences: Initial terminal size 100/50
+# ===============================================================
 # Facebook
 # ===============================================================
 waynelwarren/std
@@ -32,3 +36,17 @@ git config --global user.email "wayne@warrenfamilyhome.com"
 git config --global user.name "Wayne Warren"
 git config --global credential.username "waynelwarren"
 git config --global push.default simple
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get update
+sudo apt-get install docker-ce
+sudo usermod -aG docker wayne
