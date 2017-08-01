@@ -1,0 +1,33 @@
+# ===============================================================
+# chrome
+# ===============================================================
+https://www.google.com/chrome/browser/desktop/index.html
+#download/64 bit .deb
+#run from Search/lock to launcher
+#login as wlw4855@gmail.com/std
+# ===============================================================
+# system settings
+# ===============================================================
+Appearance->Behavior: Show the menus for a window (In the window's title bar)
+Brightness & Lock: 10 minutes, 1 hour.
+# ===============================================================
+# Facebook
+# ===============================================================
+waynelwarren/std
+# ===============================================================
+# thunderbird
+# ===============================================================
+Create new account: Email
+Preferences: Display->Advanced (After displaying for 2147483 seconds
+             Open messages in: (A new message window)
+             Close message window/tab on move or delete
+# apt-get
+# ===============================================================
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install tmux
+sudo apt-get install htop
+sudo apt-get install git
+git config --global user.email "wayne@warrenfamilyhome.com"
+git config --global user.name "Wayne Warren"
+git config --global credential.username "waynelwarren"
