@@ -1,0 +1,6 @@
+" add this to /etc/vim directory
+:set ai
+:set aw
+:set expandtab
+:set sw=4
+:set ts=4
