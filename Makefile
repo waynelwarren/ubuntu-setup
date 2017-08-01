@@ -1,4 +1,4 @@
-all: .gitconfig vimrc.local .tmux.conf
+all: .gitconfig vimrc.local .tmux.conf pathlist
 
 .gitconfig: ~/.gitconfig
 	cp ~/.gitconfig .
@@ -6,5 +6,8 @@ all: .gitconfig vimrc.local .tmux.conf
 .tmux.conf: ~/.tmux.conf
 	cp ~/.tmux.conf .
 
-vimrc.local: ~/vimrc.local
+vimrc.local: /etc/vim/vimrc.local
 	cp ~/vimrc.local .
+
+pathlist: ~/bin/pathlist
+	cp ~/bin/pathlist .
