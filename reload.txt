@@ -31,3 +31,4 @@ sudo apt-get install git
 git config --global user.email "wayne@warrenfamilyhome.com"
 git config --global user.name "Wayne Warren"
 git config --global credential.username "waynelwarren"
+git config --global push.default simple
