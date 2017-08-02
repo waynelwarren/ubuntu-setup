@@ -50,3 +50,21 @@ sudo add-apt-repository \
 sudo apt-get update
 sudo apt-get install docker-ce
 sudo usermod -aG docker wayne
+# ===============================================================
+# forticlient
+# ===============================================================
+https://hadler.me/linux/forticlient-sslvpn-deb-packages/
+# doewnload forticlient-sslvpn_4.4.2333-1_amd64.deb
+#install it
+# setup: (Settings) [] Keep connection alive until manually stopped
+# Server: vpn.avt-usa.com
+# User: wayne.warren
+# (Connect)
+# ===============================================================
+# Remmina RDP
+# ===============================================================
+[New]
+Name: Apollo
+Server 172.22.3.238
+User name: wayne.warren
+When running, full screen, grab all keyboard events
