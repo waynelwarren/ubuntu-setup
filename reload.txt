@@ -36,6 +36,8 @@ git config --global user.email "wayne@warrenfamilyhome.com"
 git config --global user.name "Wayne Warren"
 git config --global credential.username "waynelwarren"
 git config --global push.default simple
+
+#docker
 sudo apt-get install \
     apt-transport-https \
     ca-certificates \
@@ -50,3 +52,11 @@ sudo add-apt-repository \
 sudo apt-get update
 sudo apt-get install docker-ce
 sudo usermod -aG docker wayne
+sudo apt-get install docker-ce
+
+# RocksDB
+sudo apt-get install libsnappy-dev
+sudo apt-get install zlib1g-dev
+sudo apt-get install libbz2-dev
+sudo apt-get install liblz4-dev
+sudo apt-get install libzstd-dev
