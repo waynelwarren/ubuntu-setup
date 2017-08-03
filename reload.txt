@@ -36,6 +36,7 @@ git config --global user.email "wayne@warrenfamilyhome.com"
 git config --global user.name "Wayne Warren"
 git config --global credential.username "waynelwarren"
 git config --global push.default simple
+sudo apt-get install openssh-server
 
 #docker
 sudo apt-get install \
@@ -78,3 +79,12 @@ Name: Apollo
 Server 172.22.3.238
 User name: wayne.warren
 When running, full screen, grab all keyboard events
+# ===============================================================
+# VS Code
+# ===============================================================
+# download code_1.14.2-1500506907_amd64.deb
+sudo dpkg -i code_1.14.2-1500506907_amd64.deb
+sudo apt-get install -f
+code
+#install extension, ^P for extensions, search for cpptools.
+# [install] [reload]
