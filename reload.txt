@@ -35,6 +35,7 @@ sudo apt-get upgrade
 sudo apt-get -y install tmux
 sudo apt-get -y install htop
 sudo apt-get -y install git
+sudo apt-get -y install vim
 git config --global user.email "wayne@warrenfamilyhome.com"
 git config --global user.name "Wayne Warren"
 git config --global credential.username "waynelwarren"
