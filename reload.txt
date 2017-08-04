@@ -1,14 +1,17 @@
 # ===============================================================
 # chrome
 # ===============================================================
-https://www.google.com/chrome/browser/desktop/index.html
-#download/64 bit .deb
+sudo apt-get install libxss1 libappindicator1 libindicator7
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome*.deb
+sudo apt-get install -f
 #run from Search/lock to launcher
 #login as wlw4855@gmail.com/std
 # ===============================================================
 # system settings
 # ===============================================================
 Appearance->Behavior: Show the menus for a window (In the window's title bar)
+                      [Enable workspaces]
 Brightness & Lock: 10 minutes, 1 hour.
 # ===============================================================
 # terminal settings
@@ -29,17 +32,17 @@ Preferences: Display->Advanced (After displaying for 2147483 seconds
 # ===============================================================
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install tmux
-sudo apt-get install htop
-sudo apt-get install git
+sudo apt-get -y install tmux
+sudo apt-get -y install htop
+sudo apt-get -y install git
 git config --global user.email "wayne@warrenfamilyhome.com"
 git config --global user.name "Wayne Warren"
 git config --global credential.username "waynelwarren"
 git config --global push.default simple
-sudo apt-get install openssh-server
+sudo apt-get -y install openssh-server
 
 #docker
-sudo apt-get install \
+sudo apt-get -y install \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -51,40 +54,37 @@ sudo add-apt-repository \
    $(lsb_release -cs) \
    stable"
 sudo apt-get update
-sudo apt-get install docker-ce
+sudo apt-get -y install docker-ce
 sudo usermod -aG docker wayne
-sudo apt-get install docker-ce
 
 # RocksDB
-sudo apt-get install libsnappy-dev
-sudo apt-get install zlib1g-dev
-sudo apt-get install libbz2-dev
-sudo apt-get install liblz4-dev
-sudo apt-get install libzstd-dev
+sudo apt-get -y install libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev libzstd-dev
+
 # ===============================================================
 # forticlient
 # ===============================================================
-https://hadler.me/linux/forticlient-sslvpn-deb-packages/
-# doewnload forticlient-sslvpn_4.4.2333-1_amd64.deb
-#install it
+wget -O forti.deb https://hadler.me/files/forticlient-sslvpn_4.4.2333-1_amd64.deb
+sudo dpkg -i forti.deb
 # setup: (Settings) [] Keep connection alive until manually stopped
 # Server: vpn.avt-usa.com
 # User: wayne.warren
 # (Connect)
+# lock to launcher
 # ===============================================================
 # Remmina RDP
 # ===============================================================
 [New]
-Name: Apollo
-Server 172.22.3.238
-User name: wayne.warren
-When running, full screen, grab all keyboard events
+# Name: Apollo
+# Server 172.22.3.238
+# User name: wayne.warren
+# When running, full screen, grab all keyboard events
+# lock to launcher
 # ===============================================================
 # VS Code
 # ===============================================================
-# download code_1.14.2-1500506907_amd64.deb
-sudo dpkg -i code_1.14.2-1500506907_amd64.deb
-sudo apt-get install -f
+wget -O vscode.deb https://go.microsoft.com/fwlink/?LinkID=760868
+sudo dpkg -i vscode.deb
 code
 #install extension, ^P for extensions, search for cpptools.
 # [install] [reload]
+# lock to launcher
