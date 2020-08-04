@@ -1,4 +1,12 @@
+gaia /home/wayne/src/github.com/gaia-platform/GaiaPlatform
+gaiag /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/tools/gaia_generate
+se /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/db/storage_engine/mock
+cat /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/catalog/catalog_manager
+scratch /home/wayne/src/github.com/gaia-platform/GaiaPlatform/scratch/wayne
+build /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/build
+addr /home/wayne/src/github.com/gaia-platform/GaiaPlatform/scratch/wayne/samples/addr_book
+obj /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/inc/public/direct_access
+test /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/direct_access/tests
+git /home/wayne/src/github.com
+go /home/wayne/src/github.com/gaia-platform
 bin /home/wayne/bin
-git /home/wayne/git
-frame /home/wayne/git/frame_cache
-server /home/wayne/git/frame_cache/avt_assets_server
