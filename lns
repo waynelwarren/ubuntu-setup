@@ -1,22 +1,25 @@
 # Set up symbolic links to utilities
 # Set the 'build' directory to the current branch name
 #
-cd /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production
+cd /home/wayne/src/github.com/gaia-platform/GaiaPlatform/build
 BRANCH_NAME=`git status | grep "On branch" | awk '{print $3}'`
 echo $BRANCH_NAME
 rm -f build
-ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/$BRANCH_NAME build
+ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/build/$BRANCH_NAME build
 cd ~/bin
 rm -f gaiac
-ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/$BRANCH_NAME/catalog/gaiac/gaiac gaiac
+ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/build/$BRANCH_NAME/catalog/gaiac/gaiac gaiac
 rm -f flatc
-ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/$BRANCH_NAME/flatbuffers/flatc flatc
+ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/build/$BRANCH_NAME/flatbuffers/flatc flatc
 rm -f gaia_generate
-ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/$BRANCH_NAME/tools/gaia_generate/gaia_generate gaia_generate
+ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/build/$BRANCH_NAME/tools/gaia_generate/gaia_generate gaia_generate
 rm -f test_direct_access
-ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/$BRANCH_NAME/direct_access/test_direct_access test_direct_access
+ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/build/$BRANCH_NAME/direct_access/test_direct_access test_direct_access
 rm -f test_references
-ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/$BRANCH_NAME/direct_access/test_references test_references
+ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/build/$BRANCH_NAME/direct_access/test_references test_references
 rm -f test_gaia_generate
-ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/$BRANCH_NAME/tools/gaia_generate/test_gaia_generate test_gaia_generate
-
+ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/build/$BRANCH_NAME/tools/gaia_generate/test_gaia_generate test_gaia_generate
+rm -f gaia_dump
+ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/build/$BRANCH_NAME/tools/gaia_dump/gaia_dump gaia_dump
+rm -f test_multi_process
+ln -s /home/wayne/src/github.com/gaia-platform/GaiaPlatform/build/$BRANCH_NAME/common/test_multi_process test_multi_process

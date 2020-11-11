@@ -1,6 +1,6 @@
-gaia /home/wayne/src/github.com/gaia-platform/GaiaPlatform
+gaia /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production
 gaiag /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/tools/gaia_generate
-se /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/db/storage_engine/mock
+se /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/db/storage_engine
 cat /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/catalog/catalog_manager
 scratch /home/wayne/src/github.com/gaia-platform/GaiaPlatform/scratch/wayne
 build /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/build

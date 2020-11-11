@@ -43,6 +43,11 @@ git config --global credential.username "waynelwarren"
 git config --global push.default simple
 sudo apt-get -y install openssh-server
 
+# Microsoft fonts (for Morty)
+sudo apt install ttf-mscorefonts-installer
+(accept the agreement)
+sudo fc-cache -vr
+
 #docker
 sudo apt-get -y install \
     apt-transport-https \
