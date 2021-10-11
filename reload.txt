@@ -69,25 +69,6 @@ sudo apt-get -y install docker-compose
 sudo apt-get -y install libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev libzstd-dev
 
 # ===============================================================
-# forticlient
-# ===============================================================
-wget -O forti.deb https://hadler.me/files/forticlient-sslvpn_4.4.2333-1_amd64.deb
-sudo dpkg -i forti.deb
-# setup: (Settings) [] Keep connection alive until manually stopped
-# Server: vpn.avt-usa.com
-# User: wayne.warren
-# (Connect)
-# lock to launcher
-# ===============================================================
-# Remmina RDP
-# ===============================================================
-[New]
-# Name: Apollo
-# Server 172.22.3.238
-# User name: wayne.warren
-# When running, full screen, grab all keyboard events
-# lock to launcher
-# ===============================================================
 # VS Code
 # ===============================================================
 wget -O vscode.deb https://go.microsoft.com/fwlink/?LinkID=760868
