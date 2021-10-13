@@ -1,0 +1,151 @@
+# Settings
+#    ->Privacy->Screen Lock
+#       - Blank Screen Delay 15 min
+#       - Automatic Screen Lock Delay 1 hour
+# Connect to network:
+#  FiOS-WUMXE/past8853cube636bar
+
+sudo apt update
+sudo apt -y upgrade
+sudo apt -y install openssh-server
+sudo apt -y install tmux
+
+# tmux configuration
+cat > .tmux.conf <<EOF
+set -g prefix C-a
+bind-key C-n next-window
+bind-key C-p previous-window
+bind-key C-b last-window
+set-window-option -g mode-keys vi
+EOF
+
+# Consider using ssh to continue.
+
+sudo apt -y install git
+git config --global user.email "wayne@warrenfamilyhome.com"
+git config --global user.name "Wayne Warren"
+git config --global credential.username "waynelwarren"
+git config --global push.default simple
+
+sudo apt -y install vim
+cat > /tmp/vimrc.local <<EOF
+:set ai
+:set aw
+:set expandtab
+:set sw=4
+:set ts=4
+:set incsearch
+EOF
+sudo mv /tmp/vimrc.local /etc/vim
+
+sudo apt install -y ttf-mscorefonts-installer
+# (accept agreement)
+sudo fc-cache vr
+
+sudo apt -y install htop
+
+# Docker
+sudo apt-get remove docker docker-engine docker.io containerd runc || :
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose
+udo usermod -aG docker wayne
+
+# Logout/Login to activate docker group.
+
+# Chrome.
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install -y ./google-chrome-stable_current_amd64.deb
+# First, run from Search, then Add to Favorites.
+
+# VS Code.
+wget -O vscode.deb https://go.microsoft.com/fwlink/?LinkID=760868
+sudo apt install -y ./vscode.deb
+code
+#install extension, ^P for extensions, search for cpptools.
+#   C/C++       - IntelliSense, debugging, and code browsing.
+#   Remote-SSH  - Open any folder on a remote machine using SSH and take advantage...
+#   Remote - SSH:Editing Configuration Files    - Edit SSH configuration files
+# [install] [reload]
+# Add to Favorites
+
+# .bashrc
+#    gdev preparation.
+mkdir -p ~/.local/bin && ln -s $GAIA_REPO/dev_tools/gdev/gdev.sh ~/.local/bin/gdev
+sudo apt-get update && sudo apt-get install -y python3-pip
+python3.8 -m pip install --user atools argcomplete
+register-python-argcomplete gdev >> ~/.bashrc
+
+sudo mkdir -p /etc/docker
+cat >> /tmp/daemon.json <<EOF
+{
+"experimental": true,
+"insecure-registries": ["192.168.0.250:5000"]
+}
+EOF
+sudo mv /tmp/daemon.json /etc/docker
+
+mkdir -p ~/.docker
+cat >> .docker/config.json <<EOF
+{
+"experimental": "enabled"
+}
+EOF
+
+sudo service docker restart
+
+cat >> ~/.bashrc <<EOF
+# WLW additions
+ch() { cd `grep -m 1 "^$1" ~/bin/pathlist | awk '{print $2}'` ; }
+chb() { cd /home/wayne/src/github.com/gaia-platform/GaiaPlatform ; cd `git status | grep "On branch" | awk '{print "/home/wayne/src/github.com/gaia-platform/GaiaPlatform/build/" $3}'` ; }
+vicode() { ch ; grep -l -r --include="*.c" --include="*.inc" --include="*.cpp" --include="*.h" --include="*.hpp" "$1" ; vi `grep -l -r --include="*.c" --include="*.inc" --include="*.cpp" --include="*.h" --include="*.hpp" "$1"` ; }
+vifile() { ch ; find . -name "$1" ; vi `find . -name "$1"` ; }
+export PATH=./:/home/wayne/.local/bin:/home/wayne/bin:/home/wayne/src/github.com/gaia-platform/sandbox/node-v14.17.6-linux-x64/bin:/home/wayne/src/github.com/gaia-platform/GaiaPlatform/build/build/llvm/bin:$PATH
+export GOPATH=/home/wayne
+export CMAKE_BUILD_TYPE=DEBUG
+export PS1="\[\033[01;44m\h@\u:\w\n>\[\033[00m"
+export CC=/usr/bin/clang-10
+export CPP=/usr/bin/clang-cpp-10
+export CXX=/usr/bin/clang++-10
+export LDFLAGS="-B/usr/lib/llvm-10/bin/ -fuse-ld=lld-10"
+export LD_LIBRARY_PATH=/home/wayne/bin/gaia/lib
+export GAIA_REPO=/home/wayne/src/github.com/gaia-platform/GaiaPlatform
+export PROD=/home/wayne/src/github.com/gaia-platform/GaiaPlatform/production
+export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+alias f='find . -name '
+alias hi='history'
+alias grepc='grep -r --include="*.c"'
+alias greph='grep -r --include="*.h"'
+alias grepcpp='grep -r --include="*.cpp"'
+alias grepcmake='grep -r --include=CMakeLists.txt'
+alias grepcode='grep -r --include="*.c" --include="*.inc" --include="*.cpp" --include="*.h" --include="*.hpp" --include="*.py"'
+alias grepcmake='grep -r --include=CMakeLists.txt'
+alias today='cd /home/wayne/wlw/`date +%g-%m`'
+alias tree='find . | grep -v \.git | sed s/^..//'
+alias ll='ls -la'
+alias gl='git log --pretty=format:"%h | %<(10,trunc)%an | %<(12,trunc)%ar | %s" | head -20'
+alias llt='ls -lta | head -20'
+alias cm='cmake --log-level=NOTICE -DGAIA_REPO=/home/wayne/src/github.com/gaia-platform/GaiaPlatform -DGAIA_PROD_BUILD=/home/wayne/src/github.com/gaia-platform/GaiaPlatform/build/build -DCMAKE_INSTALL_PREFIX=/home/wayne/bin/gaia'
+alias cm-sdk='cmake -DCMAKE_MODULE_PATH=/usr/local/lib/cmake/CPackDebHelper -DBUILD_GAIA_RELEASE=ON'
+EOF
+
+# pathlist
+cat > ~/bin/pathlist <<EOF
+gaia /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production
+gr /home/wayne/src/github.com/gaia-platform/GRover
+a /home/wayne/src/github.com/gaia-platform/amr_swarm_template
+sch /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/schemas/test
+cat /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/catalog/catalog_manager
+tests /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/direct_access/tests
+git /home/wayne/src/github.com
+go /home/wayne/src/github.com/gaia-platform
+bin /home/wayne/bin
+t1 /home/wayne/src/github.com/gaia-platform/GaiaPlatform/third_party/production/TranslationEngineLLVM/clang/test/Parser
+t2 /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/tools/tests/gaiat
+t3 /home/wayne/src/github.com/gaia-platform/GaiaPlatform/production/tools/gaia_translate/tests
+tr /home/wayne/src/github.com/gaia-platform/GaiaPlatform/third_party/production/TranslationEngineLLVM
+m /home/wayne/src/github.com/gaia-platform/GaiaPlatform/build/master
+master /home/wayne/src/github.com/gaia-platform/GaiaPlatform/build/master
+EOF
